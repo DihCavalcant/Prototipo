@@ -1,0 +1,244 @@
+
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    height: 100vh;
+    width: 100%;
+
+    gap: 25px;
+}
+
+#overlay{
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#areaJogadores{
+    background-color: #0f0f0f;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+
+    border-radius: 5px;
+
+    width: 350px;
+    height: 500px;
+
+    font-size: 1.2rem;
+    color: aliceblue;
+    font-family: "genos";
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+
+    text-align: center;
+}
+
+#areaJogadores header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 15px;
+}
+
+#areaJogadores header h2{
+    width: 100%;
+}
+
+#AreaAdicionarJogador{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#nomedojogador{
+    width: 200px;
+    height: 35px;
+
+    border:none;
+    border-radius: 5px;
+
+    font-family: "Bangers";
+
+    padding-left: 5px;
+
+        box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+
+    
+}
+
+#adicionarJogador{
+    height: 35px;
+    width: 35px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    border: none;
+    font-family: "bangers";
+    font-size: 1.3rem;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+#btn-start{
+    width: 200px;
+    height: 35px;
+
+    border: none;
+    border-radius: 5px;
+
+    font-family: "genos";
+    font-weight: bold;
+
+    cursor: pointer;
+}
+#listaDeJogadores{
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+
+    width: 320px;
+    height: 320px;
+
+    border-radius: 5px;
+}
+.itemListaPlayer{
+    display: flex;
+    width: 320px;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+.iconremoveplayer{
+    width: 20px;
+    height: 20px;
+
+    cursor: pointer;
+}
+
+/* Cores das Cartas */
+:root {
+    --cor-vermelho: #9b221e;
+    --cor-laranja: #e6911d;
+    --cor-azul: #0a4d8c;
+    --cor-verde: #1e8c3e;
+}
+
+#turno-display {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: "bangers";
+}
+
+.game-scene {
+    position: relative;
+    width: 280px;
+    height: 400px;
+    perspective: 1500px;
+    cursor: pointer;
+}
+
+.deck-pile {
+    position: absolute;
+    width: 100%; height: 100%;
+    background: #222;
+    border-radius: 15px;
+    border: 2px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    color: white;
+    font-family: "bangers";
+}
+
+.card-wrapper {
+    position: absolute;
+    width: 100%; height: 100%;
+    z-index: 10;
+    visibility: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.3s;
+}
+
+.card-face {
+    position: absolute;
+    width: 100%; height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px;
+    box-sizing: border-box;
+    color: white;
+    font-family: "genos";
+}
+
+.card-front { transform: rotateY(180deg); }
+.card-back { background: #333; border: 4px solid #fff; }
+
+/* Animações */
+.is-drawn { visibility: visible; }
+.is-flipped { transform: rotateY(180deg) scale(1.05) translateY(0px); }
+.is-exiting { opacity: 0; transform: scale(0.9) translateY(-150px) rotateY(180deg); }
+
+.texto-desafio {
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 2px solid rgba(255,255,255,0.4);
+    padding-bottom: 15px;
+    width: 100%;
+}
+
+.drinks-container { display: flex; gap: 10px; }
+.drink-icon {
+    width: 30px; height: 40px;
+    background: rgba(255,255,255,0.2);
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
+    position: relative;
+}
+.drink-fill { position: absolute; bottom: 0; width: 100%; height: 60%; background: #fff; }
+.footer-line { width: 80%; height: 2px; background: rgba(255,255,255,0.4); }
+/* Lógica de visibilidade dos drinks por cor */
+
+/* VERDE: 0 drinks (esconde o container todo) */
+.card-front[style*="background-color: rgb(30, 140, 62)"] .drinks-container,
+.card-front[style*="background-color: var(--cor-verde)"] .drinks-container {
+    display: none;
+}
+
+/* AZUL: 1 drink (esconde o segundo e o terceiro) */
+.card-front[style*="background-color: rgb(10, 77, 140)"] .drink-icon:nth-child(n+2),
+.card-front[style*="background-color: var(--cor-azul)"] .drink-icon:nth-child(n+2) {
+    display: none;
+}
+
+/* AMARELO/LARANJA: 2 drinks (esconde apenas o terceiro) */
+.card-front[style*="background-color: rgb(230, 145, 29)"] .drink-icon:nth-child(3),
+.card-front[style*="background-color: var(--cor-laranja)"] .drink-icon:nth-child(3) {
+    display: none;
+}
+
+/* VERMELHO: 3 drinks (não precisa de regra, o padrão já mostra os 3) */
