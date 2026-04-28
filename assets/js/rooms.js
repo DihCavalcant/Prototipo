@@ -7,6 +7,8 @@ const listajogadores = document.getElementById("listaDeJogadores")
 const overlay = document.getElementById("overlay")
 let EtapaCustom = 1
 let modoDeJogo = ""
+let baralhoAtivo = []
+
 
 window.addEventListener("load", ()=>{
     if(window.location.search == "?CustomGame"){
@@ -45,19 +47,25 @@ btnRemoverJogadores.forEach((element) => {
 
 btncomecarjogo.addEventListener("click", ()=>{
     
+    if(listajogadores.querySelectorAll("span").length <= 1){
+        alert("numero de jogadores insuficiente")
+    } 
+
     let itemlistaplayer = document.querySelectorAll(".itemListaPlayer")
     
-    
-
-    if(modoDeJogo == "?CustomGame" && EtapaCustom == 1){
-
-jogadores = []
+    if(EtapaCustom == 1) {
+        jogadores = []
     
     itemlistaplayer.forEach((element) => {
           let itemparaarray = element.firstElementChild.textContent
           
           jogadores.push(itemparaarray)
     })
+    
+    }
+
+    if(modoDeJogo == "?CustomGame" && EtapaCustom == 1){
+
         
         overlay.querySelector("h2").textContent = "Hora Dos Desafios"
         overlay.querySelector("input").placeholder = "Adicione um Novo Desafio"
@@ -99,6 +107,10 @@ jogadores = []
         mainGame.style.display = "block";
         estadoJogo = "PRONTO";
     }
+
+baralhoAtivo = (modoDeJogo == "?CustomGame") ? desafiosCustom : baralhoOriginal;
+restantes = [...baralhoAtivo];
+
         overlay.style.display = "none"
 
 })
@@ -203,6 +215,8 @@ const mainGame = document.getElementById("main-game");
 // });
 // Lógica de clicar na tela para trocar carta
 document.querySelector("main").addEventListener("click", () => {
+
+
     if (estadoJogo === "ANIMANDO" || jogadores.length === 0) return;
 
     if (estadoJogo === "EXIBINDO") {
@@ -215,7 +229,10 @@ document.querySelector("main").addEventListener("click", () => {
         }, 400);
     } else if (estadoJogo === "PRONTO") {
         // Sacar nova carta
-        if (restantes.length === 0) restantes = [...baralhoOriginal];
+
+if (restantes.length === 0) {
+    restantes = [...baralhoAtivo];
+}
         
         const i = Math.floor(Math.random() * restantes.length);
         const carta = restantes.splice(i, 1)[0];
