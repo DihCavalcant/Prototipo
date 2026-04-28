@@ -154,7 +154,7 @@ cursor: pointer;
     color: gray;
 }
 
-#boxConfirm{
+#boxConfirm, #boxcustomconfirm{
     position: absolute;
     background-color: #fff;
     box-shadow:0px 4px 6px -1px rgba(0, 0, 0, 0.8);
@@ -184,7 +184,7 @@ cursor: pointer;
 
 }
 
-#buttons button{
+#buttons button,#buttonscustom button{
     width: 100px;
     height: 25px;
 
@@ -198,7 +198,9 @@ cursor: pointer;
     color: #310063;
     cursor: pointer;
 
-    margin: 0 10px;
+    margin: 5px 10px;
+
+    
 }
 
 #buttons button:active{

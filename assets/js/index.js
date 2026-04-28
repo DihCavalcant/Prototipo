@@ -43,9 +43,28 @@ opcaoModos.forEach((item)=>{
        let captura = boxConfirm.firstElementChild.textContent
 
        if(captura.toLowerCase().includes("normal")){
-        window.location.href = "rooms.html"
+        window.location.href = "rooms.html?NormalGame"
        } else if(captura.toLowerCase().includes("custom")) {
-        alert("Esse Modo estara disponivel em breve")
+         let btncustomColetivo = document.getElementById("btnColetivo")
+         let customBOx = document.getElementById("boxcustomconfirm")
+         let btnIndividual = document.getElementById("btnIndividual")
+         let btnVoltarCustom = document.getElementById("btnVoltarCustom")
+
+        customBOx.style.display = "flex"
+
+        btncustomColetivo.addEventListener("click", ()=>{
+            alert("o modo ainda esta em desenvolvimento")
+        })
+
+        btnIndividual.addEventListener("click", ()=>{
+            window.location.href = "rooms.html?CustomGame"
+        })
+
+        btnVoltarCustom.addEventListener("click", ()=>{
+            customBOx.style.display = "none"
+        })
+
+         
        } else if(captura.toLowerCase().includes("royale")) {
         alert("Esse Modo estara disponivel em breve")
        }else if(captura.toLowerCase().includes("mestre")) {
