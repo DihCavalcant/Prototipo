@@ -46,17 +46,19 @@ btnRemoverJogadores.forEach((element) => {
 btncomecarjogo.addEventListener("click", ()=>{
     
     let itemlistaplayer = document.querySelectorAll(".itemListaPlayer")
-    jogadores = []
-      itemlistaplayer.forEach((element) => {
-          let itemparaarray = element.firstElementChild.textContent
-          
-          jogadores.push(itemparaarray)
-    });
-
+    
     
 
     if(modoDeJogo == "?CustomGame" && EtapaCustom == 1){
 
+jogadores = []
+    
+    itemlistaplayer.forEach((element) => {
+          let itemparaarray = element.firstElementChild.textContent
+          
+          jogadores.push(itemparaarray)
+    })
+        
         overlay.querySelector("h2").textContent = "Hora Dos Desafios"
         overlay.querySelector("input").placeholder = "Adicione um Novo Desafio"
         
@@ -71,6 +73,7 @@ btncomecarjogo.addEventListener("click", ()=>{
     
     if(modoDeJogo == "?CustomGame" && EtapaCustom == 2){
 
+        desafiosCustom = []
         itemlistaplayer.forEach((element) => {
           let itemparaarray = element.firstElementChild.textContent
           
@@ -85,10 +88,9 @@ btncomecarjogo.addEventListener("click", ()=>{
         return
     }
 
-    overlay.style.display = "none"
 
     
- if(modoDeJogo == "?CustomGame"){
+   if(modoDeJogo == "?CustomGame"){
          restantes = [...desafiosCustom]
     }
 
@@ -97,6 +99,7 @@ btncomecarjogo.addEventListener("click", ()=>{
         mainGame.style.display = "block";
         estadoJogo = "PRONTO";
     }
+        overlay.style.display = "none"
 
 })
 
@@ -185,8 +188,6 @@ const baralhoOriginal = [
     { cor: "#9b221e", texto: "Beije a pessoa que o grupo escolher, ou beba." }
 ];
 let restantes = [...baralhoOriginal];
-
-
 let indiceAtual = 0;
 let estadoJogo = "AGUARDANDO"; // AGUARDANDO, EXIBINDO, ANIMANDO
 // Elementos da Carta
