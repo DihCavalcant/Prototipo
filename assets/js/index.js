@@ -68,7 +68,7 @@ opcaoModos.forEach((item)=>{
        } else if(captura.toLowerCase().includes("royale")) {
         alert("Esse Modo estara disponivel em breve")
        }else if(captura.toLowerCase().includes("mestre")) {
-        alert("Esse Modo estara disponivel em breve")
+        window.location.href = "rooms.html?Mestre"
        }
 
        })
