@@ -244,3 +244,25 @@ main{
 }
 
 /* VERMELHO: 3 drinks (não precisa de regra, o padrão já mostra os 3) */
+
+/* Centraliza o texto e ocupa o espaço total da frente da carta */
+#card-wrapper.modo-custom-ativo .card-front {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: center;     /* Centraliza horizontalmente */
+}
+
+/* Faz o texto do desafio ficar bonito no meio */
+#card-wrapper.modo-custom-ativo #texto-desafio {
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5rem; /* Ajuste o tamanho se precisar */
+}
+
+/* Some com os copos e com a linha do rodapé */
+#card-wrapper.modo-custom-ativo .drinks-container,
+#card-wrapper.modo-custom-ativo .footer-line {
+    display: none !important;
+}

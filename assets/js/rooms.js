@@ -111,6 +111,12 @@ btncomecarjogo.addEventListener("click", ()=>{
 baralhoAtivo = (modoDeJogo == "?CustomGame") ? desafiosCustom : baralhoOriginal;
 restantes = [...baralhoAtivo];
 
+if (modoDeJogo === "?CustomGame") {
+    cardWrapper.classList.add("modo-custom-ativo");
+} else {
+    cardWrapper.classList.remove("modo-custom-ativo");
+}
+
         overlay.style.display = "none"
 
 })
