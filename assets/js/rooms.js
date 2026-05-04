@@ -103,12 +103,21 @@ let btncomecarjogo = document.getElementById("btn-start")
 let EtapaCustom = 1
 let modoDeJogo = ""
 let baralhoAtivo = []
+let AreaAdicionarJogador = document.getElementById("AreaAdicionarJogador")
  
 window.addEventListener("load", ()=>{
     if(window.location.search == "?CustomGame"){
         modoDeJogo = "?CustomGame"
         
         btncomecarjogo.textContent = "PROXIMO"
+    } else if (window.location.search == "?Mestre"){
+        modoDeJogo = "?Mestre"
+        
+        btncomecarjogo.textContent = "Iniciar Partida"
+
+        AreaAdicionarJogador.style.display = "none"
+
+        overlay.querySelector("h2").textContent = "Aguardando Jogadores"
     }
 })
 
@@ -130,7 +139,7 @@ btnAdicionarJogadores.addEventListener("click", () =>{
     limparcampo.value = ""
 
     let btnRemoverJogadores = document.querySelectorAll(".iconremoveplayer")
-       
+
 btnRemoverJogadores.forEach((element) => {
     element.addEventListener("click", ()=>{
         element.parentElement.remove()
@@ -158,7 +167,6 @@ btncomecarjogo.addEventListener("click", ()=>{
     })
     
     }
-
     if(modoDeJogo == "?CustomGame" && EtapaCustom == 1){
 
         
@@ -177,7 +185,7 @@ btncomecarjogo.addEventListener("click", ()=>{
     if(modoDeJogo == "?CustomGame" && EtapaCustom == 2){
 
         desafiosCustom = []
-        itemlistaplayer.forEach((element) => {
+          itemlistaplayer.forEach((element) => {
           let itemparaarray = element.firstElementChild.textContent
           
           desafiosCustom.push({cor: "#5a2d82", texto: itemparaarray})
@@ -187,12 +195,7 @@ btncomecarjogo.addEventListener("click", ()=>{
         
     }     
     
-    if(jogadores == ""){
-        return
-    }
-
-
-    
+   
    if(modoDeJogo == "?CustomGame"){
          restantes = [...desafiosCustom]
     }
@@ -203,16 +206,24 @@ btncomecarjogo.addEventListener("click", ()=>{
         estadoJogo = "PRONTO";
     }
 
-baralhoAtivo = (modoDeJogo == "?CustomGame") ? desafiosCustom : baralhoOriginal;
-restantes = [...baralhoAtivo];
+    baralhoAtivo = (modoDeJogo == "?CustomGame") ? desafiosCustom : baralhoOriginal;
+    restantes = [...baralhoAtivo];
 
-if (modoDeJogo === "?CustomGame") {
+    if (modoDeJogo === "?CustomGame") {
     cardWrapper.classList.add("modo-custom-ativo");
-} else {
+    } else {
     cardWrapper.classList.remove("modo-custom-ativo");
-}
+    }
 
-        overlay.style.display = "none"
+    if(modoDeJogo === "?Mestre"){
+        
+    }
+
+    if(jogadores == ""){
+        return
+    }
+    
+    overlay.style.display = "none"
 
 })
 
