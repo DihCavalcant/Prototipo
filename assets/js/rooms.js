@@ -1,4 +1,5 @@
-import { db, ref, get, onValue, update, push } from "./firebase-config.js";
+// Adicione o 'set' aqui dentro das chaves
+import { db, ref, get, set, update, push } from "./firebase-config.js";
 
 const itemtemplatejogador = /** @type{HTMLTemplateElement} */ (document.getElementById("item-template-jogador"));
 const listajogadores = document.getElementById("listaDeJogadores");

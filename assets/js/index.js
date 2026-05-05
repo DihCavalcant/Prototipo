@@ -1,5 +1,6 @@
 
-import { db, ref, get, update, push } from "./firebase-config.js";
+// Adicione o 'set' aqui dentro das chaves
+import { db, ref, get, set, update, push } from "./firebase-config.js";
 
 let buttons = document.querySelectorAll("button")
 let overlay = document.getElementById("overlay")
