@@ -1,13 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Genos:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap');
-
-*{
- margin: 0;
- padding: 0;
- text-decoration: none;
- box-sizing: border-box;   
- outline: none;
- list-style: none;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
-body{
-background-color:#000;
+
+:root {
+    --vermelho-venom: #D62828;
+    --grafite-escuro: #1A1A1A;
+    --cinza-antracite: #2B2D42;
+    --cinza-medio: #8D99AE;
+    --cinza-gelo: #F4F5F7;
+    --branco: #FFFFFF;
+}
+
+html {
+    scroll-behavior: smooth;
 }
